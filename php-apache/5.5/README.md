@@ -72,11 +72,11 @@ Loading your custom PHP application with composer requirements
 Create a Dockerfile like the following:
 
 ```go
-FROM azukiapp/php-apache:5.6
-RUN apt-get update \
-    apt-get install -yq php5-pgsql \
-    rm -rf /var/lib/apt/lists/*
-RUN composer install
+  FROM azukiapp/php-apache:5.6
+  RUN apt-get update \
+      apt-get install -yq php5-pgsql \
+      rm -rf /var/lib/apt/lists/*
+  RUN composer install
 ```
 
 Replacing `php5-pgsql` with any dependencies that your composer packages might need.
