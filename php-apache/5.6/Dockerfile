@@ -22,11 +22,12 @@ RUN apt-get update && \
 
 # Add PostgreSQL Global Development Group apt source
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" \
-    > /etc/apt/sources.list.d/pgdg.list
+        > /etc/apt/sources.list.d/pgdg.list && \
+    wget -qO - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | apt-key add -
 
-# Add PGDG repository key
-RUN wget -qO - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc \
-    | apt-key add -
+RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" \
+        > /etc/apt/sources.list.d/php5-5.6.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C
 
 # Install php5 + apache2 + DB clients
 RUN apt-get update && \
