@@ -1,11 +1,12 @@
-azuki/php-apache
+azuki/php-apache:5.6
 ================
 
 Base docker image to run PHP applications on Apache with composer
 
 - Git
-- Composer
+- Apache2
 - PHP Version 5.6.3
+- Composer
 - MySQL Client
 - PostgreSQL Client
 - MongoDB
@@ -81,46 +82,6 @@ $ curl http://localhost/
 Hello world!
 ```
 
-Loading your custom PHP application
------------------------------------
+## License
 
-This image can be used as a base image for your PHP application. Create a new `Dockerfile` in your 
-PHP application folder with the following contents:
-
-```sh
-$ FROM azukiapp/php-apache:5.6
-```
-
-After that, build the new `Dockerfile`:
-
-```sh
-$ docker build -t username/my-php-app .
-```
-
-And test it:
-
-```sh
-$ docker run -d -p 80:80 username/my-php-app
-```
-
-Test your deployment:
-
-```sh
-$ curl http://localhost/
-```
-
-
-Loading your custom PHP application with composer requirements
---------------------------------------------------------------
-
-Create a Dockerfile like the following:
-
-```go
-  FROM azukiapp/php-apache:5.6
-  RUN apt-get update \
-      apt-get install -yq php5-pgsql \
-      rm -rf /var/lib/apt/lists/*
-  RUN composer install
-```
-
-Replacing `php5-pgsql` with any dependencies that your composer packages might need.
+Dockerfiles distributed under the [Apache License](https://github.com/azukiapp/dockerfiles/blob/master/LICENSE).
