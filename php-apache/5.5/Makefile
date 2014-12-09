@@ -1,7 +1,8 @@
+# `adocker` is alias to `azk docker`
 all: php
 
 php:
-	docker build -t azukiapp/php-apache:5.5 .
+	adocker build -t azukiapp/php-apache:5.5 .
 
 php-no-cache:
-	docker build --rm --no-cache -t azukiapp/php-apache:5.5 .
+	adocker build --rm --no-cache -t azukiapp/php-apache:5.5 .
