@@ -10,6 +10,50 @@ Base docker image to run PHP applications on Apache with composer
 - PostgreSQL Client
 - MongoDB
 
+##azk
+Example of using that image with the [azk](https://github.com/azukiapp/azk):
+
+```js
+/**
+ * Documentation: http://docs.azk.io/Azkfile.js
+ */
+
+// Adds the systems that shape your system
+systems({
+  phpSample: {
+    // Dependent systems
+    depends: [], // postgres, mysql, mongodb ...
+    // More images:  http://images.azk.io
+    image: "azukiapp/php-apache:5.5",
+    workdir: "/azk/#{manifest.dir}",
+    shell: "/bin/bash",
+    wait: {"retry": 20, "timeout": 1000},
+    mounts: {
+      '/azk/#{manifest.dir}': path("."),
+    },
+    scalable: {"default": 2},
+    http: {
+      // phpSample.azk.dev
+      domains: [ "#{system.name}.#{azk.default_domain}" ]
+    },
+    ports: {
+      // exports global variables
+      http: "80/tcp",
+    },
+    envs: {
+      // set instances variables
+      // EXAMPLE: "value",
+    },
+    docker_extra: {
+      // extra docker options
+      start: {
+        Privileged: "true",
+      },
+    },
+  },
+});
+
+```
 
 Building the base image
 -----------------------
