@@ -1,4 +1,4 @@
-azuki/php-apache:5.6
+[azuki/php-apache](https://registry.hub.docker.com/u/azukiapp/php-apache/)
 ================
 
 Base docker image to run PHP applications on Apache with composer
