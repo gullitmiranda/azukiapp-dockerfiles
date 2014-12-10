@@ -46,7 +46,7 @@ RUN wget -qO - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc \
 
 # Install ruby dependencies, nodejs, DB clients and imagemagick
 RUN apt-get update -qq && \
-    apt-get install -y nodejs --no-install-recommends \
+    apt-get install -y nodejs --no-install-recommends && \
     apt-get install -y -qq \
       libcurl4-openssl-dev \
       libffi-dev \
