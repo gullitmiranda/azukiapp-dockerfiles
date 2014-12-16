@@ -1,7 +1,8 @@
 # `adocker` is alias to `azk docker`
 all:
 	# base
-	adocker build -t azukiapp/web-based     ./web-based
+	adocker build -t azukiapp/ubuntu         ./base/ubuntu
+	adocker build -t azukiapp/web-based      ./base/web
 
 	# latest
 	adocker build -t azukiapp/php-apache     ./php-apache/5.6
@@ -12,9 +13,10 @@ all:
 	adocker build -t azukiapp/php-apache:5.6 ./php-apache/5.6
 	adocker build -t azukiapp/ruby:2.1       ./ruby/2.1
 
-all-no-cache:
+--no-cache:
 	# base
-	adocker build --rm --no-cache -t azukiapp/web-based     ./web-based
+	adocker build --rm --no-cache -t azukiapp/ubuntu         ./base/ubuntu
+	adocker build --rm --no-cache -t azukiapp/web-based      ./base/web
 
 	# latest
 	adocker build --rm --no-cache -t azukiapp/php-apache     ./php-apache/5.6

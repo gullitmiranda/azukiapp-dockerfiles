@@ -1,12 +1,8 @@
 [azukiapp/web-based]((https://registry.hub.docker.com/u/azukiapp/web-based/))
 ================
 
-Base docker image to run Ruby applications
+Base docker image to run Web applications
 
-- Ubuntu 14.04
-- Git
-- VIM
-- NodeJS
 - MySQL Client
 - PostgreSQL Client
 - MongoDB
@@ -56,4 +52,3 @@ To create the base image `azukiapp/web-based`, execute the following command on 
 ```sh
 $ docker build -t azukiapp/web-based .
 ```
-
