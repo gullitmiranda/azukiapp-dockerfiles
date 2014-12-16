@@ -50,5 +50,5 @@ Building the base image
 To create the base image `azukiapp/ubuntu`, execute the following command on the `ubuntu` folder:
 
 ```sh
-$ docker build -t azukiapp/web-based .
+$ docker build -t azukiapp/ubuntu .
 ```
