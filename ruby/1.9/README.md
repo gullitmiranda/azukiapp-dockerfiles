@@ -7,6 +7,7 @@ Base docker image to run Ruby applications
 - Ruby 1.9.3-p551
 - RubyGems 2.3.0
 - Bundler
+- NodeJS
 - MySQL Client
 - PostgreSQL Client
 - MongoDB
