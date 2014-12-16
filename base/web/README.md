@@ -1,4 +1,4 @@
-[azukiapp/web-based]((https://registry.hub.docker.com/u/azukiapp/web-based/))
+[azukiapp/web-based](https://registry.hub.docker.com/u/azukiapp/web-based/)
 ================
 
 Base docker image to run Web applications
@@ -10,7 +10,7 @@ Base docker image to run Web applications
 ##azk
 Example of using that image with the [azk](http://azk.io):
 
-```js
+```
 /**
  * Documentation: http://docs.azk.io/Azkfile.js
  */

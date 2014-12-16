@@ -1,10 +1,10 @@
-[azuki/ruby:2.1]((https://registry.hub.docker.com/u/azukiapp/ruby/))
+[azuki/ruby:1.9](https://registry.hub.docker.com/u/azukiapp/ruby/)
 ================
 
 Base docker image to run Ruby applications
 
 - Git
-- Ruby 2.1.2
+- Ruby 1.9.3-p551
 - RubyGems 2.3.0
 - Bundler
 - MySQL Client
@@ -13,20 +13,20 @@ Base docker image to run Ruby applications
 - ImageMagick
 
 ##azk
-Example of using that image with the [azk](https://github.com/azukiapp/azk):
+Example of using that image with the [azk](http://azk.io):
 
-```js
+```
 /**
  * Documentation: http://docs.azk.io/Azkfile.js
  */
 
 // Adds the systems that shape your system
 systems({
-  ruby21: {
+  ruby19: {
     // Dependent systems
     depends: [],
     // More images:  http://images.azk.io
-    image: "ruby:2.1",
+    image: "ruby:1.9",
     // Steps to execute before running instances
     provision: [
       "bundle install --path /azk/bundler",
@@ -41,7 +41,7 @@ systems({
     },
     scalable: {"default": 2},
     http: {
-      // ruby21.
+      // ruby19.azk.dev
       domains: [ "#{system.name}.#{azk.default_domain}" ]
     },
     envs: {
@@ -57,25 +57,8 @@ systems({
 Building the base image
 -----------------------
 
-To create the base image `azukiapp/ruby:2.1`, execute the following command on the `ruby/2.1` folder:
+To create the base image `azukiapp/ruby:1.9`, execute the following command on the `ruby/1.9` folder:
 
 ```sh
-$ docker build -t azukiapp/azukiapp/ruby:2.1 .
-```
-
-Running your Ruby docker image
-------------------------------------
-
-Start your image binding the external ports 3000 in all interfaces to your container:
-
-```sh
-$ docker run -d -p 3000:3000 azukiapp/ruby:2.1
-```
-
-Test your deployment:
-
-```sh
-$ curl http://localhost:3000/
-
-Hello world!
+$ docker build -t azukiapp/azukiapp/ruby:1.9 .
 ```

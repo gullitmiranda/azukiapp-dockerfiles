@@ -2,5 +2,5 @@
 all:
 	adocker build -t azukiapp/ubuntu .
 
---no-cache:
+no-cache:
 	adocker build --rm --no-cache -t azukiapp/ubuntu .

@@ -1,4 +1,4 @@
-[azuki/ruby:2.1]((https://registry.hub.docker.com/u/azukiapp/ruby/))
+[azukiapp/ruby:2.1](https://registry.hub.docker.com/u/azukiapp/ruby/)
 ================
 
 Base docker image to run Ruby applications
@@ -13,9 +13,9 @@ Base docker image to run Ruby applications
 - ImageMagick
 
 ##azk
-Example of using that image with the [azk](https://github.com/azukiapp/azk):
+Example of using that image with the [azk](http://azk.io):
 
-```js
+```
 /**
  * Documentation: http://docs.azk.io/Azkfile.js
  */
@@ -61,21 +61,4 @@ To create the base image `azukiapp/ruby:2.1`, execute the following command on t
 
 ```sh
 $ docker build -t azukiapp/azukiapp/ruby:2.1 .
-```
-
-Running your Ruby docker image
-------------------------------------
-
-Start your image binding the external ports 3000 in all interfaces to your container:
-
-```sh
-$ docker run -d -p 3000:3000 azukiapp/ruby:2.1
-```
-
-Test your deployment:
-
-```sh
-$ curl http://localhost:3000/
-
-Hello world!
 ```
