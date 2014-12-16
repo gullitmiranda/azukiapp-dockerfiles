@@ -1,6 +1,11 @@
 # Dockerfiles
 
 The repository contains Dockerfiles for various public Docker images, namely:
+
+* `azukiapp/node:0.10`:
+  - Node 0.10.33
+  - NPM 2.1.11
+
 * `azukiapp/php-apache:5.6`:
   - Apache2
   - PHP Version 5.5.9
