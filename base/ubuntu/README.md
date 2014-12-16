@@ -1,4 +1,4 @@
-[azukiapp/ubuntu]((https://registry.hub.docker.com/u/azukiapp/ubuntu/))
+[azukiapp/ubuntu](https://registry.hub.docker.com/u/azukiapp/ubuntu/)
 ================
 
 Base docker image to run Ubuntu
@@ -10,7 +10,7 @@ Base docker image to run Ubuntu
 ##azk
 Example of using that image with the [azk](http://azk.io):
 
-```js
+```
 /**
  * Documentation: http://docs.azk.io/Azkfile.js
  */
@@ -33,7 +33,7 @@ systems({
     },
     scalable: {"default": 2},
     http: {
-      // web-based.azk.dev
+      // ubuntu.azk.dev
       domains: [ "#{system.name}.#{azk.default_domain}" ]
     },
     envs: {

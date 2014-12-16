@@ -1,4 +1,4 @@
-[azuki/php-apache](https://registry.hub.docker.com/u/azukiapp/php-apache/)
+[azukiapp/php-apache](https://registry.hub.docker.com/u/azukiapp/php-apache/)
 ================
 
 Base docker image to run PHP applications on Apache with composer
@@ -12,9 +12,9 @@ Base docker image to run PHP applications on Apache with composer
 - MongoDB
 
 ##azk
-Example of using that image with the [azk](https://github.com/azukiapp/azk):
+Example of using that image with the [azk](http://azk.io):
 
-```js
+```
 /**
  * Documentation: http://docs.azk.io/Azkfile.js
  */

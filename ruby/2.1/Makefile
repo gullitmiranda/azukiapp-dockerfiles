@@ -1,7 +1,5 @@
-all: ruby
+all:
+	adocker build -t azukiapp/ruby .
 
-ruby:
-	docker build -t azukiapp/ruby .
-
-ruby-no-cache:
-	docker build --rm --no-cache -t azukiapp/ruby .
+no-cache:
+	adocker build --rm --no-cache -t azukiapp/ruby .

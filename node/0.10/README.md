@@ -1,16 +1,10 @@
-[azukiapp/ruby:2.1](https://registry.hub.docker.com/u/azukiapp/ruby/)
+[azukiapp/node](https://registry.hub.docker.com/u/azukiapp/node/)
 ================
 
 Base docker image to run Ruby applications
 
-- Git
-- Ruby 2.1.2
-- RubyGems 2.3.0
-- Bundler
-- MySQL Client
-- PostgreSQL Client
-- MongoDB
-- ImageMagick
+- Node 0.10.33
+- NPM 2.1.11
 
 ##azk
 Example of using that image with the [azk](http://azk.io):
@@ -22,43 +16,50 @@ Example of using that image with the [azk](http://azk.io):
 
 // Adds the systems that shape your system
 systems({
-  ruby21: {
+  node: {
     // Dependent systems
     depends: [],
     // More images:  http://images.azk.io
-    image: "ruby:2.1",
+    image: "azukiapp/node",
     // Steps to execute before running instances
     provision: [
-      "bundle install --path /azk/bundler",
+      // "npm install",
     ],
     workdir: "/azk/#{manifest.dir}",
     shell: "/bin/bash",
-    command: "bundle exec rackup config.ru --port $HTTP_PORT",
+    command: "# node server.js",
     wait: {"retry": 20, "timeout": 1000},
     mounts: {
-      '/azk/bundler': persistent("bundler"),
       '/azk/#{manifest.dir}': path("."),
     },
     scalable: {"default": 2},
     http: {
-      // ruby21.
+      // node.azk.dev
       domains: [ "#{system.name}.#{azk.default_domain}" ]
     },
     envs: {
       // set instances variables
-      RUBY_ENV: "development",
-      BUNDLE_APP_CONFIG: "/azk/bundler",
+      EXAMPLE: "value",
     },
   },
 });
-
 ```
 
 Building the base image
 -----------------------
 
-To create the base image `azukiapp/ruby:2.1`, execute the following command on the `ruby/2.1` folder:
+To create the base image `azukiapp/node`, execute the following command on the `ruby/node` folder:
 
 ```sh
-$ docker build -t azukiapp/azukiapp/ruby:2.1 .
+$ docker build -t azukiapp/node .
+```
+
+Running your image
+------------------------------------
+
+Run interactive node console in new container:
+
+```sh
+$ docker run --rm -ti azukiapp/node node
+> process.version
 ```
