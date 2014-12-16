@@ -1,7 +1,19 @@
+# The container includes:
+#
+# azukiapp/ubuntu:
+# * Ubuntu 14.04
+# * Git
+# * VIM
+#
+
 FROM ubuntu:trusty
 MAINTAINER Azuki <support@azukiapp.com>
 
-# Install base packages
+# ==============================================================================
+# Ubuntu Linux 14.04
+# ==============================================================================
+
+# Ignore APT warnings about not having a TTY
 ENV DEBIAN_FRONTEND noninteractive
 
 # Ensure UTF-8 locale
@@ -18,6 +30,7 @@ RUN apt-get update \
       curl \
       wget \
       bindfs \
+      vim \
       git-core \
   && apt-get clean -qq \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

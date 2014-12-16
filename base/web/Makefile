@@ -1,7 +1,6 @@
-all: web-based
-
-web-based:
+# `adocker` is alias to `azk docker`
+all:
 	adocker build -t azukiapp/web-based .
 
-web-based-no-cache:
+--no-cache:
 	adocker build --rm --no-cache -t azukiapp/web-based .
