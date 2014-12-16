@@ -7,6 +7,7 @@ Base docker image to run PHP applications on Apache with composer
 - Apache2
 - PHP Version 5.6.3
 - Composer
+- NodeJS
 - MySQL Client
 - PostgreSQL Client
 - MongoDB
