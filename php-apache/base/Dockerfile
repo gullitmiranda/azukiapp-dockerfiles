@@ -1,36 +1,21 @@
-FROM ubuntu:trusty
+# The container includes:
+#
+# - Git
+# - Apache2
+# - PHP Version 5.5.9
+# - Composer
+# - Node
+# - MySQL Client
+# - PostgreSQL Client
+# - MongoDB
+#
+
+FROM azukiapp/node
 MAINTAINER Azuki <support@azukiapp.com>
 
-# Install base packages
-ENV DEBIAN_FRONTEND noninteractive
-
-# Ensure UTF-8 locale
-RUN locale-gen en_US.UTF-8
-ENV LANG       en_US.UTF-8
-ENV LC_ALL     en_US.UTF-8
-RUN dpkg-reconfigure locales
-
-RUN apt-get update && \
-    apt-get upgrade -yq && \
-    apt-get -yq install \
-        build-essential \
-        ca-certificates \
-        curl \
-        wget \
-        bindfs \
-        git-core
-
-# Add PostgreSQL Global Development Group apt source
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" \
-    > /etc/apt/sources.list.d/pgdg.list
-
-# Add PGDG repository key
-RUN wget -qO - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc \
-    | apt-key add -
-
-# Install php5 + apache2 + DB clients
-RUN apt-get update && \
-    apt-get -yq install \
+# Install PHP5 + Apache2 + Libs
+RUN apt-get update -qq \
+  && apt-get install -y -qq \
         apache2 \
         libxml2 \
         libcurl4-openssl-dev \
@@ -45,10 +30,9 @@ RUN apt-get update && \
         php5-gd \
         php-pear \
         php-apc \
-        mongodb \
-        mysql-client \
-        postgresql-client-9.3 && \
-    pecl install mongo
+  && pecl install mongo \
+  && apt-get clean -qq \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Enable php and apache modules
 RUN echo "extension=mongo.so" > /etc/php5/mods-available/mongo.ini
@@ -59,10 +43,6 @@ RUN sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2
 RUN sed -i 's/\/var\/www\/html/\/var\/www/g' /etc/apache2/sites-available/000-default.conf
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Clean up APT and temporary files when done
-RUN apt-get clean -qq && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add image configuration and scripts
 ADD run.sh /run.sh

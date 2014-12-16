@@ -25,7 +25,7 @@ systems({
     // Dependent systems
     depends: [], // postgres, mysql, mongodb ...
     // More images:  http://images.azk.io
-    image: "azukiapp/php-apache:5.5",
+    image: "azukiapp/php-apache:base",
     workdir: "/azk/#{manifest.dir}",
     shell: "/bin/bash",
     wait: {"retry": 20, "timeout": 1000},
@@ -59,10 +59,10 @@ systems({
 Building the base image
 -----------------------
 
-To create the base image `azukiapp/php-apache:5.6`, execute the following command on the azuki-docker-php folder:
+To create the base image `azukiapp/php-apache:base`, execute the following command on the azuki-docker-php folder:
 
 ```sh
-$ docker build -t azukiapp/php-apache:5.6 .
+$ docker build -t azukiapp/php-apache:base .
 ```
 
 Running your Apache+PHP docker image
@@ -71,7 +71,7 @@ Running your Apache+PHP docker image
 Start your image binding the external ports 80 in all interfaces to your container:
 
 ```sh
-$ docker run -d -p 80:80 azukiapp/php-apache:5.6
+$ docker run -d -p 80:80 azukiapp/php-apache:base
 ```
 
 Test your deployment:
